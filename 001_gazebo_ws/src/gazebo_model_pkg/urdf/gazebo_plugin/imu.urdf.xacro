@@ -1,0 +1,32 @@
+<robot name="imu" xmlns:xacro="http://wiki.ros.org/xacro">
+    <!-- 惯性测量单元是测量物体三轴姿态角(或角速率)以及加速度的装置。
+        imu消息结构中姿态(orientation）类型为四元数(geometry_msgs/Quaternion):
+        - 角速度(angular_velocity）
+        - 线加速度(linear_acceleration）的类型为三维向量(geometry_msgs/Vector3)。
+    -->
+    <!-- TODO 指向小车中的一个imu连杆link -->
+    <gazebo reference="imu_link">
+        <gravity>true</gravity>
+        <sensor name="imu_sensor" type="imu">
+            <always_on>true</always_on>
+            <update_rate>100</update_rate>
+            <visualize>true</visualize>
+            <topic>__default_topic__</topic>
+            <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+                <!-- 定义发布的topic -->
+                <topicName>imu</topicName>
+                <bodyName>imu_link</bodyName>
+                <!-- 更新频率 -->
+                <updateRateHZ>10.0</updateRateHZ>
+                <gaussianNoise>0.0</gaussianNoise>
+                <xyzOffset>0 0 0</xyzOffset>
+                <rpyOffset>0 0 0</rpyOffset>
+                <!-- TODO 和reference相同，都是指向小车中定一个imu连杆link -->
+                <frameName>imu_link</frameName>
+                <initialOrientationAsReference>false</initialOrientationAsReference>
+            </plugin>
+            <!-- 设置偏移量和倾斜弧度，作用与link中的origin标签相同 -->
+            <pose>0 0 0 0 0 0</pose>
+        </sensor>
+    </gazebo>
+</robot>
