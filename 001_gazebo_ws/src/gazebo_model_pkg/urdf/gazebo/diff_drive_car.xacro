@@ -1,0 +1,18 @@
+<!-- <?xml version="1.0"/> -->
+<!--
+    这个文件中用来描述在Gazebo中仿真的机器人。
+    其通常包括：
+        - 可以在Rivz中可以查看的纯模型文件（一般是.urdf文件）
+        - 在之前的基础上加入Gazebo仿真需要额外添加的描述（如需要渲染的颜色等）
+        - 导入Gazebo仿真时需要的各种插件（在 "gazebo_plugin/" 文件夹中）
+-->
+
+<robot name="diff_drive_car" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- 导入Gazebo仿真时需要的各种插件 -->
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/diff_drive.xacro" />
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/camera.xacro" />
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/imu.xacro" />
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/laser.xacro" />
+
+</robot>
