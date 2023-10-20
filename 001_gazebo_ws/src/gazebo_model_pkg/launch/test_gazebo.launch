@@ -1,0 +1,15 @@
+<!-- test，该文件只用于对照 -->
+<launch>
+    <!-- 1. 设置参数 -->
+    <param name=" robot_description"
+        command="$(find xacro)/xacro $(find gazebo_model_pkg)/urdf/xacro/test.urdf.xacro" />
+
+    <!-- 2. 启动Gazebo仿真环境 .world -->
+    <include file="$(find gazebo_model_pkg)/launch/gazebo_world.launch">
+        <arg name="world _name" value="$(find gazebo_model_pkg)/worlds/demo.world" />
+    </include>
+
+    <!-- 在Gazebo中添加机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
+        args="-file $(find gazebo_model_pkg)/urdf/TODO.urdf -urdf -model robot_description" />
+</launch>

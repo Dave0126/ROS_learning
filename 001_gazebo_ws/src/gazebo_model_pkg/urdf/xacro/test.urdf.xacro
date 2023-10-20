@@ -1,0 +1,14 @@
+<robot name="mycar" xmlns:xacro="http://wiki.ros.org/xacro">
+    <!-- 包含惯性矩阵文件 -->
+    <xacro:include filename="demo2_head.urdf.xacro" />
+    <!-- 组合小车底盘、摄像头、雷达、imu -->
+    <xacro:include filename="demo2_base.urdf.xacro" />
+    <xacro:include filename="demo3_camera.urdf.xacro" />
+    <xacro:include filename="demo4_laser.urdf.xacro" />
+
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/diff_drive.urdf.xacro" />
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/camera.urdf.xacro" />
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/imu.urdf.xacro" />
+    <xacro:include filename="$(find gazebo_model_pkg)/urdf/gazebo_plugin/laser.urdf.xacro" />
+
+</robot>
